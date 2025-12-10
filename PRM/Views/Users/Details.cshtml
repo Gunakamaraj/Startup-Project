@@ -1,0 +1,66 @@
+@model PRM.Models.User
+
+@{
+    ViewData["Title"] = "User Details";
+}
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card shadow">
+                <div class="card-header bg-info text-white">
+                    <h3 class="mb-0">User Details</h3>
+                </div>
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>ID:</strong> @Model.Id</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>First Name:</strong> @Model.FirstName</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>Last Name:</strong> @Model.LastName</p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Email:</strong> @Model.Email</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <p><strong>Status:</strong> 
+                                @if (Model.IsActive)
+                                {
+                                    <span class="badge bg-success">Active</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-danger">Inactive</span>
+                                }
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <p><strong>Created Date:</strong> @Model.CreatedAt.ToString("yyyy-MM-dd HH:mm")</p>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <a href="@Url.Action("Edit", "Users", new { id = Model.Id })" class="btn btn-warning">
+                            <i class="bi bi-pencil"></i> Edit
+                        </a>
+                        <a href="@Url.Action("Delete", "Users", new { id = Model.Id })" class="btn btn-danger">
+                            <i class="bi bi-trash"></i> Delete
+                        </a>
+                        <a href="@Url.Action("Index", "Users")" class="btn btn-secondary">
+                            <i class="bi bi-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+@model PRM.Dtos.RegisterDtos
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row justify-content-center">
+        <div class="col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5">
+            <div class="card shadow-sm border-0">
+                <div class="card-body p-4 p-sm-5">
+                    <h2 class="card-title text-center mb-4">
+                        <i class="bi bi-person-plus me-2 text-primary"></i>Create Account
+                    </h2>
+                    
+                    @if (!ViewData.ModelState.IsValid)
+                    {
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong><i class="bi bi-exclamation-triangle me-2"></i>Registration Error!</strong>
+                            <ul class="mb-0 mt-2">
+                                @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+                                {
+                                    <li>@error.ErrorMessage</li>
+                                }
+                            </ul>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    }
+
+                    <form asp-action="Register" method="post" class="needs-validation" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                        <div class="mb-3">
+                            <label asp-for="firstName" class="form-label"><i class="bi bi-person me-2"></i>First Name</label>
+                            <input asp-for="firstName" class="form-control" placeholder="Enter first name" />
+                            <span asp-validation-for="firstName" class="text-danger small d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="lastName" class="form-label"><i class="bi bi-person me-2"></i>Last Name</label>
+                            <input asp-for="lastName" class="form-control" placeholder="Enter last name" />
+                            <span asp-validation-for="lastName" class="text-danger small d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="email" class="form-label"><i class="bi bi-envelope me-2"></i>Email Address</label>
+                            <input asp-for="email" type="email" class="form-control" placeholder="Enter email" />
+                            <span asp-validation-for="email" class="text-danger small d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="password" class="form-label"><i class="bi bi-lock me-2"></i>Password</label>
+                            <input asp-for="password" type="password" class="form-control" placeholder="Enter password" />
+                            <span asp-validation-for="password" class="text-danger small d-block mt-1"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="confirmPassword" class="form-label"><i class="bi bi-lock me-2"></i>Confirm Password</label>
+                            <input asp-for="confirmPassword" type="password" class="form-control" placeholder="Confirm password" />
+                            <span asp-validation-for="confirmPassword" class="text-danger small d-block mt-1"></span>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100 mb-3">
+                            <i class="bi bi-check-circle me-2"></i>Register
+                        </button>
+                    </form>
+
+                    <div class="text-center">
+                        <p class="text-muted small">Already have an account? 
+                            <a asp-controller="Auth" asp-action="Login" class="text-decoration-none fw-bold">Login here</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

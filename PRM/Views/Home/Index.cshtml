@@ -1,0 +1,237 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="container mb-5">
+    <section class="hero-section py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">Project Management System</h1>
+                <p class="lead text-muted mb-4">
+                    Streamline your project workflows, track team progress, manage resources efficiently, 
+                    and deliver projects on time with our comprehensive Project Management System.
+                </p>
+                <div class="d-flex gap-2 flex-wrap">
+                    @if (Context.Session.GetString("UserEmail") != null)
+                    {
+                        <a href="@Url.Action("Profile", "Auth")" class="btn btn-primary btn-lg">
+                            <i class="bi bi-person-circle"></i> View Profile
+                        </a>
+                        <a href="@Url.Action("Index", "Users")" class="btn btn-outline-primary btn-lg">
+                            <i class="bi bi-people"></i> Manage Team
+                        </a>
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("Login", "Auth")" class="btn btn-primary btn-lg">
+                            <i class="bi bi-box-arrow-in-right"></i> Login
+                        </a>
+                        <a href="@Url.Action("Register", "Auth")" class="btn btn-outline-primary btn-lg">
+                            <i class="bi bi-person-plus"></i> Register
+                        </a>
+                    }
+                </div>
+            </div>
+            <div class="col-lg-6 mt-4 mt-lg-0">
+                <div class="bg-light rounded-lg p-5 text-center shadow-sm">
+                    @if (Context.Session.GetString("UserEmail") != null)
+                    {
+                        <h4 class="text-success mb-3">Welcome Back!</h4>
+                        <p class="mb-2">
+                            <strong>Name:</strong> @Context.Session.GetString("UserName")
+                        </p>
+                        <p class="mb-0">
+                            <strong>Email:</strong> @Context.Session.GetString("UserEmail")
+                        </p>
+                    }
+                    else
+                    {
+                        <p class="text-muted mb-0">
+                            Log in or register to get started with our Project Management System
+                        </p>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section py-5 mt-5">
+        <h2 class="text-center mb-5">Core Features</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 transition-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-kanban text-primary display-4 mb-3"></i>
+                        <h5 class="card-title mb-3">Project Dashboard</h5>
+                        <p class="card-text text-muted">
+                            Get a comprehensive overview of all your projects, track progress in real-time, and monitor key metrics.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 transition-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-people-fill text-success display-4 mb-3"></i>
+                        <h5 class="card-title mb-3">Team Management</h5>
+                        <p class="card-text text-muted">
+                            Manage team members, assign tasks, track workload distribution, and improve team collaboration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 transition-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-calendar-check text-info display-4 mb-3"></i>
+                        <h5 class="card-title mb-3">Task Scheduling</h5>
+                        <p class="card-text text-muted">
+                            Create and schedule tasks, set deadlines, manage dependencies, and ensure timely project delivery.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 transition-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-graph-up text-warning display-4 mb-3"></i>
+                        <h5 class="card-title mb-3">Progress Tracking</h5>
+                        <p class="card-text text-muted">
+                            Monitor project progress with detailed reports, visual analytics, and performance insights.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 transition-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-file-text text-danger display-4 mb-3"></i>
+                        <h5 class="card-title mb-3">Documentation</h5>
+                        <p class="card-text text-muted">
+                            Maintain project documentation, track specifications, and keep stakeholders informed.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0 transition-card">
+                    <div class="card-body text-center">
+                        <i class="bi bi-shield-lock text-secondary display-4 mb-3"></i>
+                        <h5 class="card-title mb-3">Security & Access</h5>
+                        <p class="card-text text-muted">
+                            Role-based access control, secure authentication, and comprehensive audit trails for your projects.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="benefits-section py-5 mt-5">
+        <h2 class="text-center mb-5">Why Choose Our System?</h2>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div>
+                        <h6 class="text-primary fw-bold">
+                            <i class="bi bi-lightning-fill"></i> Lightning Fast
+                        </h6>
+                        <p class="text-muted mb-0">
+                            Optimized performance ensures your team works without interruptions.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div>
+                        <h6 class="text-success fw-bold">
+                            <i class="bi bi-easel2-fill"></i> Intuitive Design
+                        </h6>
+                        <p class="text-muted mb-0">
+                            User-friendly interface requires minimal training and setup time.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div>
+                        <h6 class="text-info fw-bold">
+                            <i class="bi bi-cloud-sync-fill"></i> Cloud-Based
+                        </h6>
+                        <p class="text-muted mb-0">
+                            Access your projects anywhere, anytime with cloud synchronization.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="d-flex gap-3">
+                    <div>
+                        <h6 class="text-warning fw-bold">
+                            <i class="bi bi-headset"></i> 24/7 Support
+                        </h6>
+                        <p class="text-muted mb-0">
+                            Dedicated support team ready to help you achieve project success.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="stats-section py-5 mt-5 bg-light rounded">
+        <div class="row text-center">
+            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                <div class="stat-card">
+                    <h3 class="text-primary fw-bold">500+</h3>
+                    <p class="text-muted">Active Projects</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                <div class="stat-card">
+                    <h3 class="text-success fw-bold">1000+</h3>
+                    <p class="text-muted">Team Members</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
+                <div class="stat-card">
+                    <h3 class="text-info fw-bold">98%</h3>
+                    <p class="text-muted">Success Rate</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6">
+                <div class="stat-card">
+                    <h3 class="text-warning fw-bold">50</h3>
+                    <p class="text-muted">Organizations</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section py-5 mt-5 text-center">
+        <h3 class="mb-4">Ready to Transform Your Project Management?</h3>
+        <p class="lead text-muted mb-4">Join thousands of teams already using our platform to deliver projects successfully.</p>
+        @if (Context.Session.GetString("UserEmail") == null)
+        {
+            <a href="@Url.Action("Register", "Auth")" class="btn btn-primary btn-lg">
+                <i class="bi bi-rocket"></i> Get Started Today
+            </a>
+        }
+        else
+        {
+            <a href="@Url.Action("Index", "Users")" class="btn btn-primary btn-lg">
+                <i class="bi bi-arrow-right"></i> Go to Dashboard
+            </a>
+        }
+    </section>
+</div>
