@@ -1,0 +1,5 @@
+.vs/
+
+# Entity Framework Core Migrations
+**/Migrations/*.cs
+!**/Migrations/DesignTimeDbContextFactory.cs
